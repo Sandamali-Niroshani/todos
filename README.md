@@ -1,4 +1,4 @@
-# Selenium, TestNG with Java Automation project
+# Selenium, TestNG with Java Automation project for ToDos application
 
 ## Introduction
 This project is built using Java, Selenium WebDriver, and TestNG.
@@ -14,7 +14,8 @@ This project contain only one testcase under testScripts folder(TC01_ToDos.java)
 - Page Object Model (POM) for maintainability
 - Maven for dependency management
 - Use TestNG annotations for setup and teardown
-- Capture screenshots as needed and stored in `Screenshots/` folder
+- Capture screenshots as needed and stored in `screenshots/` folder
+- Handle testdata using properties file.
 
 ## Technologies Used
 - Java 11
@@ -28,12 +29,12 @@ Ensure you have the following installed:
 - Maven
 - IDE (IntelliJ IDEA)
 - Google Chrome
-- ChromeDriver (compatible with your Chrome version) stored in `Drivers/` folder
+- ChromeDriver (compatible with your Chrome version) stored in `drivers/` folder
 
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/selenium-testng-framework.git
+   git clone https://github.com/Sandamali-Niroshani/todos.git
    ```
 2. Install dependencies:
    ```sh
