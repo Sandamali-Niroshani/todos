@@ -204,7 +204,7 @@ public class Todos extends pageBase {
         chkToggleAll.click();
         captureScreenshots(ldriver, "markedItemsAsCompleted");
 
-        //Verify item displayed as completed under complete tab
+        //verify all items displayed under complete tab
         lnkCompleted.click();
         Assert.assertTrue(txtToDoItemsUnderCompleteTab.size() == toDoItemList.split(",").length, "All the completed items are displayed under complete tab");
         captureScreenshots(ldriver, "itemDisplayedAsCompletedUnderCompleteTab");

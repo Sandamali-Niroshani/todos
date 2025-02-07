@@ -8,14 +8,17 @@ It is designed for automating ToDos web applications and follows best practices 
 **Please note that to execute testcase, you need to run the TestNg.xml file. Because testdata file passed as parameter in TestNg.xml file.**
 This project contain only one testcase under testScripts folder(TC01_ToDos.java). Inside this testcase include multiple test methods to test the ToDos application.
 
+All the Acceptance criteria for the given user story documented in Acceptance criteria (AC) for todos.pdf file. And it is shared with email.
+
 ## Features
 - Selenium WebDriver for web automation
 - TestNG for test execution and Assertions
 - Page Object Model (POM) for maintainability
 - Maven for dependency management
-- Use TestNG annotations for setup and teardown
+- Use TestNG annotations for setup and teardown(BaseTest.java)
 - Capture screenshots as needed and stored in `screenshots/` folder
 - Handle testdata using properties file.
+- Maintain config file, manage reusable method separately(pageBase.java).
 
 ## Technologies Used
 - Java 11
@@ -55,8 +58,7 @@ Todos/
 │   │   ├── java/
 │   │   │   ├── pages/            # pageBase class to manage common methods and Page Object Model (POM) classes
 |   |   |   ├── testData/         # Test data (use properties file for test data)
-│   │   │   ├── testScripts/      # TestNG test scripts
-│   │   │   ├── tests/            # BaseTest class for setup and teardown and TestNG test cases
+│   │   │   ├── testScripts/      # Test scripts and BaseTest class for setup and teardown
 │   │   │   ├── utilities/        # ReadConfig class to read configuration file and TestDataReader class to read test data
 │-- configuration/                # Configuration files (config.properties) 
 │-- drivers/                      # ChromeDriver
@@ -66,16 +68,14 @@ Todos/
 │-- README.md
 ```
 
-## Explaination of the project
+## Explanation of the project
 This is Selenium, TestNG with Java Maven project for ToDos web application.
-All the Acceptance criteria for the given user story documented in Acceptance criteria (AC) for todos.pdf file. And it is shared with email.
 
 - **pages/**: Contains Page Object Model (POM) classes for each page of the application. This application has only one page (ToDosPage).
 - **pages/BasePage.java**: Contains common methods for all pages.
 - **testData/**: Contains test data in properties file format.
 - **testScripts/**: Contains TestNG test scripts.
 - **testScripts/BaseTest.java**: Contains setup and teardown methods.
-- **tests/**: Contains BaseTest class for setup and teardown and TestNG test cases.
 - **utilities/**: Contains ReadConfig class to read configuration file and TestDataReader class to read test data.
 - **configuration/**: Contains configuration files (config.properties). Browser and url details are stored in config.properties file.
 - **drivers/**: Contains ChromeDriver.
@@ -85,10 +85,16 @@ All the Acceptance criteria for the given user story documented in Acceptance cr
 - **README.md**: Project documentation.
 
 ### Test Case
-- **TC01_ToDos.java**: Contains test methods to test the ToDos application.
-- Testcase extends BaseTest class.
-- Testcase includes multiple test methods to test the ToDos application.
+- **TC01_ToDos.java**
 
+**Design of testcase**
+
+- Testcase extends BaseTest class.
+- The test case has been drafted according to the Acceptance Criteria document, which has been shared via email.
+- Decided to maintain different test methods inside on testcase as all the actions relate with one section.
+- So Testcase includes multiple test methods to test the ToDos application.
+
+**Test methods of testcase**
 
    1) addEditCompleteToDo(): Test method to add, edit, and complete a ToDo. Verified following
 scenarios under this test method.
@@ -115,21 +121,27 @@ scenarios under this test method.
       - Verify active count displayed correctly as items completed
       
 
-   4) filterToDos(): This method is used to filter to do items based on tabs and verify the items are displayed under correct tabs. Verified following scenarios under this test method.
-      - Filter ToDos
-      - Verify ToDos are displayed
+   4) filterToDos(): Test method is used to filter to do items based on tabs and verify the items are displayed under correct tabs. Verified following scenarios under this test method.
+      - Add list of items
+      - Verify item list display correctly under All tab.
+      - Verify item list display correctly under Active tab.
+      - Marked one item as completed and verify completed item under Complete tab.
+      - Verify completed item is not displayed under active tab
+      - Verify all the items are displayed under All tab.(Verify with item count)
+      - Verify completed item is displayed as checked item under All tab.
       
 
    5) clearCompleted(): Test method to clear completed ToDos. Verified following scenarios under this test method.
-      - Clear completed ToDos
-      - Verify completed ToDos are removed
+      - Add list of items and mark all items as completed
+      - Verify all items displayed under complete tab
+      - Click Clear Complete button and Verify completed ToDos are removed
       
 
    6) selectUnselectAllToDos: Test method to select and unselect all ToDos. Verified following scenarios under this test method.
-      - Select all ToDos
-      - Verify all ToDos are selected
-      - Unselect all ToDos
-      - Verify all ToDos are unselected
+      - Add list of items and mark all items as completed using toggle-all button
+      - Verify all items are displayed under complete tab.
+      - Mark all completed items as active (unselect completed items) using toggle-all button 
+      - Verify all items are displayed under Active tab.
 
 
 
